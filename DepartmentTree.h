@@ -57,8 +57,12 @@ class DepartmentTree{
 
         DepartmentNode* searchNode(const string& name) const;
 
-        void de
-
-}
+        static void delNode(DepartmentNode* node);
+        static void preRecursive(const DepartmentNode* node, vector<string>& out);
+        static void postRecursive(const DepartmentNode* node, vector<string>& out);
+        static void dispRecursive(const DepatmentNode* node, int depth, ostream& out);
+        static size_t leavesRecursive(const DepartmentNode* node);
+        static int heightRecursive(const DepartmentNode* node);
+};
 
 #endif
