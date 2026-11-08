@@ -47,6 +47,11 @@ namespace TextHandler {
         return strSegment;
     }
 
+    //T if equal ignoring capitalization
+    inline bool eqIgnCase(const string& str1, const string& str2) {
+        return toLower(str2) == toLower(str1);
+    }
+
 }// ns TextHandler
 
 #endif
