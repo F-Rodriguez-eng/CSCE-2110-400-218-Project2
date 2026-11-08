@@ -211,7 +211,7 @@ size_t DepartmentTree::leavesRecursive(const DepartmentNode* node){
         return 1;
     }
     size_t leavesCount = 0;
-    for(size_t i=0l i<node->child.size(); ++i){
+    for(size_t i=0; i<node->child.size(); ++i){
         leavesCount += leavesRecursive(node->child[i]);
     }
     return leavesCount;
@@ -250,4 +250,30 @@ void DepartmentTree::dispRecursive(const DepartmentNode* node, int depth, ostrea
     for(size_t i = 0; i < node->child.size(); ++i){
         dispRecursive(node->child[i], depth + 1, out);
     }
-}//break time..
+}
+
+void DepartmentTree::displayDeptHier(ostream& out) const{
+    if(root == nullptr){
+        out << "No departments loaded.\n";
+        return;
+    }
+    dispRecursive(root, 0, out);
+}
+
+//Preorder - Parent before L,R
+void DepartmentTree::preRecursive(const DepartmentNode* node, vector<string>& out){
+    out.push_back(node->name);
+    for(size_t i =0; i< node->child.size(); ++i){
+        preRecursive(node->child[i], out);
+    }
+}
+
+vector<string> DepartmentTree::deptNamePre() const{
+    vector<string> out;
+    if (root != nullptr){
+        preRecursive(root, out);
+    }
+    return out;
+}
+
+//Postoder - L,R before node
