@@ -277,3 +277,30 @@ vector<string> DepartmentTree::deptNamePre() const{
 }
 
 //Postoder - L,R before node
+void DepartmentTree::postRecursive(const DepartmentNode* node, vector<string>& out){
+    for(size_t i = 0; i < node->child.size(); out){
+        postRecursive(node->child[i], out);
+    }
+    out.push_back(node->name);
+}
+
+//level order - bfs with q,child insert order
+vector<string> DepartmentTree::deptNamePLevel() const {
+    vector<string> out;
+    if (root == nullptr){
+        return out;
+    }
+    queue<const DepartmentNode*> upNext;
+    upNext.push(root);
+    while(!upNext.empty()){
+        const DepartmentNode* node = upNext.front();
+        upNext.pop();
+        out.push_back(node->name);
+        for(size_t i = 0; i < node->child.size(); ++i){
+            upNext.push(node->child[i]);
+        }
+    }
+    return out;
+}
+
+//fin
