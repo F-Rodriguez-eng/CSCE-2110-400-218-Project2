@@ -31,5 +31,22 @@ namespace TextHandler {
     }
 
     //splits str with delim, keeps empty fields
-    inline vector<string> split(const)
-}
+    inline vector<string> split(const string& str, char delim) {
+        vector<string> strSegment;//parts of string
+        string curr;//current
+        for (size_t i = 0; i < str.size(); ++i) {
+            if (str[i] == delim){
+                strSegment.push_back(curr);
+                curr.clear();
+            }
+            else{
+                curr += str[i];
+            }
+        }
+        strSegment.push_back(curr);
+        return strSegment;
+    }
+
+}// ns TextHandler
+
+#endif
