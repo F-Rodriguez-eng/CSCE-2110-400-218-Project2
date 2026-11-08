@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 #include <cstddef> //size_t
-#include <iosfwd> //setw
+#include <iosfwd> //ostream
 using namespace std;
 
 struct DeptFileLoadingResult{
@@ -28,9 +28,10 @@ class DepartmentTree{
         DepartmentTree& operator=(const DepartmentTree&) = delete;
 
         //replaces tree with file contents
-        //load from file
+        DeptFileLoadingResult loadFromFile(const string& path);
 
         //add a dept (adddept or something)
+        bool addDept(const string& name, const string& parName, string& err);
 
         //case insensitive search, null if not found
         const DepartmentNode* findDept(const string& name) const;
@@ -65,7 +66,7 @@ class DepartmentTree{
         static void delNode(DepartmentNode* node);
         static void preRecursive(const DepartmentNode* node, vector<string>& out);
         static void postRecursive(const DepartmentNode* node, vector<string>& out);
-        static void dispRecursive(const DepatmentNode* node, int depth, ostream& out);
+        static void dispRecursive(const DepartmentNode* node, int depth, ostream& out);
         static size_t leavesRecursive(const DepartmentNode* node);
         static int heightRecursive(const DepartmentNode* node);
 };
