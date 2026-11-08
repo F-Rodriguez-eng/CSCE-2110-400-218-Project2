@@ -195,3 +195,59 @@ DeptFileLoadingResult DepartmentTree::loadFromFile(const string& path){
     return result;
 }//loadFromFile should catch different anomolies such as missing fields, duplicates, and so on
 
+//Edges from root, root is 0
+int DepartmentTree::depth(const DepartmentNode* node) const{
+    int edgeCount = 0;
+    while (node != nullptr && node->par != nullptr){
+        node = node->par;
+        ++edgeCount;
+    }
+    return edgeCount;
+}
+
+//leaves in subtrees, nodes without children are leaves
+size_t DepartmentTree::leavesRecursive(const DepartmentNode* node){
+    if (node->child.empty()){
+        return 1;
+    }
+    size_t leavesCount = 0;
+    for(size_t i=0l i<node->child.size(); ++i){
+        leavesCount += leavesRecursive(node->child[i]);
+    }
+    return leavesCount;
+}
+
+size_t DepartmentTree::leafCount() const {
+    if (root == nullptr){
+        return 0;
+    }
+    return leavesRecursive(root);
+}
+
+//Height of the subtrees using edges, a single node is 0
+int DepartmentTree::heightRecursive(const DepartmentNode* node){
+    int peak = 0;
+    for(size_t i = 0; i < node->child.size(); ++i){
+        int h = 1 + heightRecursive(node->child[i]);
+        if(h > peak){
+            peak = h;
+        }
+    }
+    return peak;
+}
+
+//set -1 if the tree is empty
+int DepartmentTree::height() const {
+    if (root == nullptr){
+        return -1;
+    }
+    return heightRecursive(root);
+}
+
+//prints departments line by line with 4 spaces in between depths, in preorder fashion
+void DepartmentTree::dispRecursive(const DepartmentNode* node, int depth, ostream& out){
+    out << string(static_cast<size_t>(depth) * 4 , ' ') << node->name << "\n";
+    for(size_t i = 0; i < node->child.size(); ++i){
+        dispRecursive(node->child[i], depth + 1, out);
+    }
+}//break time..
