@@ -116,7 +116,7 @@ bool DepartmentTree::addDept(const string& name, const string& parentName, strin
     }
     DepartmentNode* parent = searchNode(parentTrimmed);
     if (parent == nullptr){
-        err = "Unknrown Parent Department '" + parentTrimmer + "'.";
+        err = "Unknrown Parent Department '" + parentTrimmed + "'.";
         return false;
     }
 
@@ -141,5 +141,15 @@ DeptFileLoadingResult DepartmentTree::loadFromFile(const string& path){
 
     string line;
     size_t lineNumber = 0;
+    while(getline(in, line)){
+        ++lineNumber;
+
+        //skip in UTF-8 byte, wowzas
+        if (lineNumber == 1 && line.compare(0,3,"\xEF\xBB\x8F") == 0){
+            line.erase(0,3);
+        }
+
+        string trimmed = TextHandler::split(trimmed, '|');//BREAK TIME
+    }
 }
 
