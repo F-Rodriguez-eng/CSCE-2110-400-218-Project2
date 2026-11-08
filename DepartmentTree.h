@@ -27,6 +27,11 @@ class DepartmentTree{
         DepartmentTree(const DepartmentTree&) = delete;
         DepartmentTree& operator=(const DepartmentTree&) = delete;
 
+        //replaces tree with file contents
+        //load from file
+
+        //add a dept (adddept or something)
+
         //case insensitive search, null if not found
         const DepartmentNode* findDept(const string& name) const;
 
