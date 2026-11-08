@@ -7,7 +7,7 @@
 #include <queue>
 
 namespace {
-    const char* const RT_PAR = "NONE"; //no parent to root..
+    const char* const ROT_PAR = "NONE"; //no parent to root..
 
     //File name loaded in path
     string findFileName(const string& path) {
@@ -112,7 +112,7 @@ bool DepartmentTree::addDept(const string& name, const string& parentName, strin
     string parentTrimmed = TextHandler::trimmer(parentName);
     if(parentTrimmed.empty()){
         err = "Parent name can't be empty!";
-        return false
+        return false;
     }
     DepartmentNode* parent = searchNode(parentTrimmed);
     if (parent == nullptr){
@@ -149,7 +149,49 @@ DeptFileLoadingResult DepartmentTree::loadFromFile(const string& path){
             line.erase(0,3);
         }
 
-        string trimmed = TextHandler::split(trimmed, '|');//BREAK TIME
+        string trimmed = TextHandler::split(trimmed, '|');//BREAK TIME OVER :(
+        if (trimmed.empty() || trimmed[0] == '#'){
+            continue;
+        }
+
+        vector<string> fields = TextHandler::split(trimmed, '|');
+        if (fields.size() != 2){
+            rejectCatch(file, lineNumber, "expected 2 fields as follows (DepartmentName|ParentName), found " + to_string(fields.size()),result);
+            continue;
+        }
+        string name = TextHandler::trimmer(fields[0]);
+        string parent = TextHandler::trimmer(fields[1]);
+        if (name.empty() || parent.empty()){
+            rejectCatch(file, lineNumber, "missing field required", result);
+            continue;
+        }
+
+        string err;
+        bool validQ = false;
+        bool isNone = TextHandler::eqIgnCase(parent, ROT_PAR);
+
+        if(root==nullptr){
+            if(!isNone){
+                rejectCatch(file, lineNumber, "first department MUST be root, parent set as NONE. Parent is: " + parent, result);
+                continue;
+            }
+            validQ = addDept(name, "", err);
+        }
+        else if(isNone && searchNode(parent) == nullptr){//allowing only NONE as root
+            rejectCatch(file, lineNumber, name + " uses NONE, a root already exists, only one root please.", result);
+            continue;
+        }
+        else{
+            validQ = addDept(name, parent, err);
+        }
+        if(validQ){
+            ++result.loaded;
+        }
+        else{
+            rejectCatch(file, lineNumber, err, result);
+        }
     }
-}
+    summary(file, result);
+    return result;
+}//loadFromFile should catch different anomolies such as missing fields, duplicates, and so on
 
