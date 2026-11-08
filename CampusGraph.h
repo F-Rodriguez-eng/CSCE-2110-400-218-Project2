@@ -1,1 +1,2 @@
-createtest
+#ifndef CAMPUSGRAPH_H
+#define CAMPUSGRAPH_H
