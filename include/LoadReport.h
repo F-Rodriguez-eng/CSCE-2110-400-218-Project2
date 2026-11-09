@@ -8,7 +8,7 @@ using namespace std;
 struct LoadReport {
     size_t accepted = 0;
     size_t rejected = 0;
-    vectro<string> errrors;
+    vectro<string> errors;
 };
 
 #endif
