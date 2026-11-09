@@ -44,6 +44,7 @@ File management
 Files in the project
 Main.cpp-Has the main menu and controls the whole program
 CampusGraph.h-Handles graph connections and BFS
+CampusGraph.cpp - Implements the campus graph, loads buildings and connections, calculates building degrees, performs BFS, and handles shortest paths and connectivity reports.
 DepartmentTree.h-handles the department hierarchy and traversals
 DepartmentNode.h - defines data structure for a single department(node) in the department tree
 DepartmentMenu.h - neatly organizes Main menu loop functions for a cleaner and less cluttered main.
