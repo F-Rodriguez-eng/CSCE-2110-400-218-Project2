@@ -31,6 +31,8 @@ public:
     size_t totalFacilities() const;
     const FacilityHashTable& index() const;
 
+    
+
 private:
     FacilityHashTable table;
     // accepted records, in file order

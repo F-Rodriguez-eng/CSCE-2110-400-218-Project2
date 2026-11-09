@@ -50,7 +50,7 @@ void comingSoon(const string& x){
 string promptUsr(const string& prompt){
     cout << prompt;
     string line;
-    if(!getLine(cin,line)){
+    if(!getline(cin,line)){
         cin.clear();
         return "";
     }
@@ -86,7 +86,7 @@ int main(int argc, char* argv[]){
     //Brenda (member A): facilities (buildings, connections, facilities loaded)
     FacilityManager facilities;
     LoadReport faciReport = facilities.loadFromFile(dataDr + "/facilities.txt");
-    printFacilityReport(dataDr + /facilities.txt);
+    printFacilityReport(dataDr + "/facilities.txt", faciReport);
     //Michael (member B): campus graph
 
     //Fernando (member C) departments
@@ -98,7 +98,8 @@ int main(int argc, char* argv[]){
         printMenu();
         choice = readChoice();
         switch(choice){
-            case 1: comingSoon("View all facilities");
+            case 1: cout << "View all facilities";
+            printFacilities(facilities.allFacilities(), "No facilities loaded.");
             break;
 
             case 2: comingSoon("Search facilitty by ID");
