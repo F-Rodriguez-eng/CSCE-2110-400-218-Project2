@@ -27,7 +27,7 @@ int readChoice(){
     }
     line = TextHandler::trimmer(line);
     if(line.empty() || line.size() > 2){
-        return -1
+        return -1;
     }
     for(size_t i = 0; i < line.size(); ++i){
         if(line[i] < '0' || line[i] > '9'){
