@@ -41,6 +41,15 @@ File management
 
 Files in the project
 Main.cpp-Has the main menu and controls the whole program
+CampusGraph.h-Handles graph connections and BFS
+DepartmentTree.h-handles the department hierarchy and traversals
+Facility.h/cpp-Declares the facility class and functions
+Text files- Store campus facility routes and the data
+
+
+The program loads campus information and displays a menu where users select different options. These include serch for facilities, explore building connections, finding shotest routes and generate reports.
+
+
 
 
 
