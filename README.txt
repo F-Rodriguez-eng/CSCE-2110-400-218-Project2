@@ -50,6 +50,9 @@ DepartmentNode.h - defines data structure for a single department(node) in the d
 DepartmentMenu.h - neatly organizes Main menu loop functions for a cleaner and less cluttered main.
 Facility.h/cpp-Declares the facility class and functions
 Text files- Store campus facility routes and the data
+.gitignore - Prevents unnecessary files such as compiled programs and temporary files from being added to GitHub.
+CONTRIBUTIONS.txt - Lists team members and their individual contributions to the project.
+design_document.txt - Explains the data structures, algorithms, and design decisions used in the project.
 
 
 The program loads campus information and displays a menu where users select different options. These include serch for facilities, explore building connections, finding shotest routes and generate reports.
