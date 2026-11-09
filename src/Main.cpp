@@ -105,7 +105,20 @@ int main(int argc, char* argv[]){
             printFacilities(facilities.allFacilities(), "No facilities loaded.");
             break;
 
-            case 2: comingSoon("Search facilitty by ID");
+            case 2: {
+                string id = promptUsr("Enter facility ID > ");
+                if(id.empty()){
+                    cout << "ERROR: Facility ID cannot be blank.\n";
+                    break;
+                }
+                const Facility* found = facilities.findByID(id);
+                if(found == nullptr){
+                    cout << "FAcility '" << id << "' not found.\n";
+                }
+                else{
+                    found->display();
+                }
+            }
             break;
 
             case 3: // view campus graph
