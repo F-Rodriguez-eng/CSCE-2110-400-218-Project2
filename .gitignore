@@ -1,0 +1,34 @@
+# C++ build artifacts
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.d
+
+# Compiled program names
+campus
+campus.exe
+a.out
+
+# Build folders
+build/
+bin/
+Debug/
+Release/
+CMakeFiles/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Keep source, instructor data, and required documentation tracked.
+# Do not ignore *.cpp, *.h, *.txt, README.md, or testdata/.
