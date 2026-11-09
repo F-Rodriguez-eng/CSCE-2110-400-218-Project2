@@ -17,8 +17,8 @@ Fernando Rodriguez
 Features Implemented
 Facility Management
 -Facility Search-ID
-                -Name
-                -Category
+-Name
+-Category
 -Facility Viewing
 -Category reports
 
