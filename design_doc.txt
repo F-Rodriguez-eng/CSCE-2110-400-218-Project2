@@ -1,0 +1,8 @@
+Project 2: Smart Campus Navigation and Facility Analytics System
+DESIGN DOCUMENT - Milestone 1 (with Final extensions)
+
+TEAM STRUCTURE
+Member A (Brenda Cheruiyot): facilities and custom ID hash table.
+Member B (Michael Oke): campus graph and BFS.
+Member C (Fernando Rodriguez): department tree and text helpers.
+main.cpp handles file loading, menu input, and calls to these modules.
