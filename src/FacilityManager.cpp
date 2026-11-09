@@ -4,7 +4,7 @@
 #include <iomanip>
 #include <iostream>
 #include <sstream>
-#using namespace std;
+using namespace std;//had #
 
 
 namespace {

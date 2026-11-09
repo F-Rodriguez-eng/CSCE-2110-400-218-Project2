@@ -8,7 +8,7 @@
 #include <map>
 #include <string>
 #include <vector>
-#using namespace std;
+using namespace std;//had #
 
 class FacilityManager {
 public:
