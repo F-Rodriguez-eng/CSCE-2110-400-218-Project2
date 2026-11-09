@@ -53,6 +53,7 @@ namespace DepartmentMenu{
         }
         if(tree.findDept(name) != nullptr){
             cout << "ERROR: duplicate department name'" << name << "'.. No changes made to Tree.";
+            return;
         }
 
         string parent = promptUsr("Enter name of parent department > ");

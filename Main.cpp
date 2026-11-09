@@ -15,7 +15,7 @@ also any other extensions if needed by your soecific parts
 
 //Printing the menu, in accordance to M1
 void printMenu(){
-    cout << "\n-----( Smart Campus Navigation )-----\n"<<"1. View all facilities\n"<<"2. Search facility by ID\n"<<"3. View campus graph\n"<<"4. Display graph counts and degrees\n"<<"5. Find  reachable buildings (BFS)"<<"6. Add departmnet\n"<<"7.Search department hierarchy\n"<<"8. Display department hierarchy\n"<<"9. Run preorder traversal\n"<<"0. Exit\n"<<"Enter choice > ";
+    cout << "\n-----( Smart Campus Navigation )-----\n"<<"1. View all facilities\n"<<"2. Search facility by ID\n"<<"3. View campus graph\n"<<"4. Display graph counts and degrees\n"<<"5. Find  reachable buildings (BFS)\n"<<"6. Add department\n"<<"7.Search department\n"<<"8. Display department hierarchy\n"<<"9. Run preorder traversal\n"<<"0. Exit\n"<<"Enter choice > ";
 }
 
 //read function
@@ -39,13 +39,15 @@ int readChoice(){
 
 //placeholder function for other team members
 void comingSoon(const string& x){
-    cout << x << "is not available at the moment.. [module being connected]\n";
+    cout << x << " is not available at the moment.. [module being connected]\n";
 }
 
 //takes data folder, loads with files
 int main(int argc, char* argv[]){
     //data directory arg
     string dataDr = (argc > 1) ? argv[1] : "data";
+    DepartmentTree departments;
+    departments.loadFromFile(dataDr + "/departments.txt");
 
     //required load order: buildings, connections, facilities, departments
     //Brenda (member A): facilities (buildings, connections, facilities loaded)
@@ -58,24 +60,36 @@ int main(int argc, char* argv[]){
         switch(choice){
             case 1: comingSoon("View all facilities");
             break;
+
             case 2: comingSoon("Search facilitty by ID");
             break;
+
             case 3: comingSoon("View campus graph");
             break;
+
             case 4: comingSoon("Display graph counts and degrees");
             break;
+
             case 5: comingSoon("Find reachable buildings (BFS)");
             break;
-            case 6: comingSoon("Add department");//DepartmentMenu::addDept(departments);
+
+            case 6: DepartmentMenu::addDept(departments);
             break;
-            case 7: comingSoon("Search department");//DepartmentMenu::searchDept(departments);
+
+            case 7: DepartmentMenu::searchDept(departments);
             break;
-            case 8: comingSoon("Display departmnet hierarchy"); //DepartmentMenu::displayHier(departments);
+
+            case 8: DepartmentMenu::displayHier(departments);
             break;
-            case 9: comingSoon("Run preorder trav");//DepartmentMenu::preorder(departments);
+
+            case 9: DepartmentMenu::preorder(departments);
             break;
+
             case 0: cout << "Exiting, thank you using the Smart Campus Navigation System!\n";
-            break;                                                                        
+            break;
+
+            default: cout << "ERROR: Choice is invalid. Choose an option from 0 to 9!\n";
+                                                                   
         }
     }
 
