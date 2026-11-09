@@ -60,13 +60,13 @@ int main(int argc, char* argv[]){
             break;
             case 2: comingSoon("Search facilitty by ID");
             break;
-            case 3: comingSoon("View campus graph")
+            case 3: comingSoon("View campus graph");
             break;
             case 4: comingSoon("Display graph counts and degrees");
             break;
             case 5: comingSoon("Find reachable buildings (BFS)");
             break;
-            case 6: comingSoon("Add department")//DepartmentMenu::addDept(departments);
+            case 6: comingSoon("Add department");//DepartmentMenu::addDept(departments);
             break;
             case 7: comingSoon("Search department");//DepartmentMenu::searchDept(departments);
             break;
@@ -74,7 +74,7 @@ int main(int argc, char* argv[]){
             break;
             case 9: comingSoon("Run preorder trav");//DepartmentMenu::preorder(departments);
             break;
-            case 0: cout << "Exiting, thank you using the Smart Campus Navigation System!\n"
+            case 0: cout << "Exiting, thank you using the Smart Campus Navigation System!\n";
             break;                                                                        
         }
     }

@@ -149,7 +149,7 @@ DeptFileLoadingResult DepartmentTree::loadFromFile(const string& path){
             line.erase(0,3);
         }
 
-        string trimmed = TextHandler::split(trimmed, '|');//BREAK TIME OVER :(
+        string trimmed = TextHandler::trimmer(line);//BREAK TIME OVER :(
         if (trimmed.empty() || trimmed[0] == '#'){
             continue;
         }
