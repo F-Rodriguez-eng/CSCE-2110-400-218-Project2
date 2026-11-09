@@ -39,7 +39,7 @@ Department Hierarchy
 
 File management
 -Reading the campus data from the text files
--  Validating records
+-Validating records
 
 Files in the project
 Main.cpp-Has the main menu and controls the whole program
