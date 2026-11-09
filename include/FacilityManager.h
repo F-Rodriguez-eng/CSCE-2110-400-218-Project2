@@ -31,7 +31,7 @@ public:
     size_t totalFacilities() const;
     const FacilityHashTable& index() const;
 
-    
+    const vector<Facility>& allFacilities() const;
 
 private:
     FacilityHashTable table;

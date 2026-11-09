@@ -45,7 +45,7 @@ LoadReport FacilityManager::loadFromFile(const string& path) {
         //split a line with four parts
         vector<string> fields = FileUtils::split(line, '|');
         if (fields.size() != 4) {
-            addError(report, lineNo, "expected 4 fields (ID|Name|Category|Building)");
+            addError(report, lineNo, "expected 4 fields (ID|Name|Building|Category)");
             continue;
         }
         //Remove extra spaces
@@ -59,7 +59,7 @@ LoadReport FacilityManager::loadFromFile(const string& path) {
         }
         
 
-        Facility facility(FileUtils::toUpper(fields[0]), fields[1], fields[2], fields[3]);
+        Facility facility(FileUtils::toUpper(fields[0]), fields[1], fields[3], fields[2]);
 
         //Adding to the hash table
         if (!table.insert(facility)) {
@@ -141,5 +141,9 @@ void FacilityManager::displayCategoryReport() const {
 }
 
 size_t FacilityManager::totalFacilities() const { return records.size(); }
+
+const vector<Facility>& FacilityManager::allFacilities() const {
+    return records;
+}
 
 const FacilityHashTable& FacilityManager::index() const { return table; }
