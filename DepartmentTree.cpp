@@ -284,6 +284,14 @@ void DepartmentTree::postRecursive(const DepartmentNode* node, vector<string>& o
     out.push_back(node->name);
 }
 
+vector<string> DepartmentTree::deptNamePost() const {
+    vector<string> out;
+    if(root !- nullptr){
+        postRecursive(root,out);
+    }
+    return out;
+}
+
 //level order - bfs with q,child insert order
 vector<string> DepartmentTree::deptNamePLevel() const {
     vector<string> out;
