@@ -8,5 +8,14 @@ This is a program that reads the campus information from the text files and enab
 
 The project implements a custom hash table with the collision handling to allow efficient data searching. It uses both the undirected graph and BFS to explore connections, and find the short path.
 
+Team Members
+
+Brenda Cheruiyot
+Michael Oke
+Fernando Rodriguez
+
+Features Implemented
+
+
 
 
