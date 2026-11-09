@@ -109,8 +109,36 @@ namespace DepartmentMenu{
 
         printTraversal("Preorder traversal", tree.deptNamePre());
     }
+//lost prog, post order seq
+    void postorder(const DepartmentTree& tree){
+        if(tree.isEmpty()){
+            cout << "Departments not loaded.\n";
+            return;
+        }
+        printTraversal("Postorder traversal", tree.deptNamePost());
+    }
 
+    //level order
+    void levelOrder(const DepartmentTree& tree){
+        if (tree.isEmpty()){
+            cout << "Departments note loaded\n";
+            return;
+        }
+        printTraversal("Level order traversal", tree.deptNamePLevel());
+    }
 
+    //prints total depts, leaves, height
+    void statistics(const DepartmentTree& tree){
+        if (tree.isEmpty()){
+            cout << "Departments not loaded." << endl;
+            cout << "Total Departments: 0" << endl;
+            cout << "Leaf Departments: 0" << endl;
+            cout << "Tree Height: No Tree, N/A" << endl;
+            return;
+        }
+    cout << "Total Departments: " << tree.size() << endl;
+    cout << "Leaf Departments: " << tree.leafCount() << endl;
+    cout << "Tree Height: " << tree.height() << endl;
+    }
 
-
-}
+}//ns DepartmentMenu
