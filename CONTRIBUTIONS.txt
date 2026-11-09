@@ -1,1 +1,67 @@
+Project 2: Smart Campus Navigation and Facility Analytics System
+CSCE-2110-400-218
 
+TEAM MEMBERS AND MODULE OWNERSHIP
+
+Brenda Cheruiyot:
+- Load + validate facility records (facilities.txt) 
+- Implement custom hash table 
+- Implement custom hash function 
+- Handle collision resolution strategy 
+- Reject duplicate facilities IDs 
+- Display all facilities (available or not) 
+- Search facility by ID 
+- Collision diagnoses and reporting 
+Final Sub. 
+- Search facility by name 
+- Search facility by category 
+- Facility category report 
+
+
+Michael Oke:
+- Load buildings and connections 
+- Implement undirected campus graph 
+- Maintain adjacency list representation 
+- Display graph and neighbor relationships 
+- Calculate building degrees 
+- Calculate graph statistics 
+- Implement BFS reachability search 
+- Handle isolated buildings and connected components 
+Final Sub. 
+- BFS shortest path search 
+- Path reconstruction 
+- Graph connectivity report 
+- Component counting 
+- Highest-degree building analysis 
+
+Fernando Rodriguez:
+- Load department hierarchy 
+- Implement general tree structure 
+- Add departments through menu 
+- Search departments 
+- Display department hierachy 
+- Implement preorder traversal 
+- Department depth and child count calculations 
+Final Sub. 
+- Postorder traversal 
+- Level order traversal 
+- Department statistics 
+* Total departments 
+* Leaf count 
+* Tree height 
+- Memory cleanup and destructor verification 
+
+Shared Responsibilities 
+
+Menu integration 
+README documenting 
+Test case development 
+Debugging and integration 
+Demonstration Prep 
+CELL machine testing 
+Connecting to CELL Machines 
+Installing WinSCP (File Management Tool) for Windows 
+Installing FileZilla (File Management Tool) for Apple Silicon 
+Installing/Connecting Palo Alto VPN 
+Github Maintenance 
+ 
