@@ -286,7 +286,7 @@ void DepartmentTree::postRecursive(const DepartmentNode* node, vector<string>& o
 
 vector<string> DepartmentTree::deptNamePost() const {
     vector<string> out;
-    if(root !- nullptr){
+    if(root != nullptr){
         postRecursive(root,out);
     }
     return out;
