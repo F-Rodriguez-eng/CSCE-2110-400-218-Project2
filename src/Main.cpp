@@ -3,12 +3,16 @@
 
 #include "DepartmentTree.h" //file loading, dept adding, dept search, tree trav, stats
 #include "DepartmentMenu.h" //department menu options
+#include "Facility.h"
+#include "FacilityManager.h"
+#include "LoadReport.h"
 #include "TextHandler.h" //trimming, casing, splitting
 /*^^^^^^
 Include rest of h files above please
 */
 #include <iostream>
 #include <string>
+#include <vector>
 /*^^^^^
 also any other extensions if needed by your soecific parts
 */
@@ -42,16 +46,52 @@ void comingSoon(const string& x){
     cout << x << " is not available at the moment.. [module being connected]\n";
 }
 
+//prompting
+string promptUsr(const string& prompt){
+    cout << prompt;
+    string line;
+    if(!getLine(cin,line)){
+        cin.clear();
+        return "";
+    }
+    return TextHandler::trimmer(line);
+}
+
+//facilitiies printing
+void printFacilities(const vector<Facility>& list, const string& emptyMsg){
+    if(list.empty()){
+        cout << emptyMsg<< endl;
+        return;
+    }
+    for(size_t i = 0; i < list.size(); ++i){
+        list[i].display();
+    }
+    cout << list.size() << " facility(ies) listed." <<endl;
+}
+
+//facility report
+void printFacilityReport(const string& path, const LoadReport& report){
+    cout << path << ": " << report.accepted << " accepted," << report.rejected << " rejected." << endl;
+    for(size_t i =0; i < report.errors.size(); ++i){
+        cout << " " << report.errors[i] << endl;
+    }
+}
+
 //takes data folder, loads with files
 int main(int argc, char* argv[]){
     //data directory arg
     string dataDr = (argc > 1) ? argv[1] : "data";
-    DepartmentTree departments;
-    departments.loadFromFile(dataDr + "/departments.txt");
 
     //required load order: buildings, connections, facilities, departments
     //Brenda (member A): facilities (buildings, connections, facilities loaded)
+    FacilityManager facilities;
+    LoadReport faciReport = facilities.loadFromFile(dataDr + "/facilities.txt");
+    printFacilityReport(dataDr + /facilities.txt);
     //Michael (member B): campus graph
+
+    //Fernando (member C) departments
+    DepartmentTree departments;
+    departments.loadFromFile(dataDr + "/departments.txt");
 
     int choice = -1;
     while(choice != 0){
