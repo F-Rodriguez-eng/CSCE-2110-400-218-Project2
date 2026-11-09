@@ -24,7 +24,7 @@ namespace {
     }
 
     void summary(const string& file, const DeptFileLoadingResult& result){
-        cout << file << " loaded: " << result.loaded << "accepted, " << result.rejected << " rejected.\n";
+        cout << file << " loaded: " << result.loaded << " accepted, " << result.rejected << " rejected.\n";
     }
 
 } //ns
@@ -127,7 +127,7 @@ bool DepartmentTree::addDept(const string& name, const string& parentName, strin
 
 //loading departments.txt
 DeptFileLoadingResult DepartmentTree::loadFromFile(const string& path){
-    clear;
+    clear();
     DeptFileLoadingResult result = {0, 0, false};
     string file = findFileName(path);
 
@@ -145,7 +145,7 @@ DeptFileLoadingResult DepartmentTree::loadFromFile(const string& path){
         ++lineNumber;
 
         //skip in UTF-8 byte, wowzas
-        if (lineNumber == 1 && line.compare(0,3,"\xEF\xBB\x8F") == 0){
+        if (lineNumber == 1 && line.compare(0,3,"\xEF\xBB\xBF") == 0){
             line.erase(0,3);
         }
 
@@ -278,10 +278,18 @@ vector<string> DepartmentTree::deptNamePre() const{
 
 //Postoder - L,R before node
 void DepartmentTree::postRecursive(const DepartmentNode* node, vector<string>& out){
-    for(size_t i = 0; i < node->child.size(); out){
+    for(size_t i = 0; i < node->child.size(); ++i){
         postRecursive(node->child[i], out);
     }
     out.push_back(node->name);
+}
+
+vector<string> DepartmentTree::deptNamePost() const {
+    vector<string> out;
+    if(root !- nullptr){
+        postRecursive(root,out);
+    }
+    return out;
 }
 
 //level order - bfs with q,child insert order
