@@ -34,6 +34,8 @@ Graph
 
 Department Hierarchy
 -Tree structure
+-Tree Preorder Traversal
+-Department Loading
 
 File management
 -Reading the campus data from the text files
@@ -43,6 +45,8 @@ Files in the project
 Main.cpp-Has the main menu and controls the whole program
 CampusGraph.h-Handles graph connections and BFS
 DepartmentTree.h-handles the department hierarchy and traversals
+DepartmentNode.h - defines data structure for a single department(node) in the department tree
+DepartmentMenu.h - neatly organizes Main menu loop functions for a cleaner and less cluttered main.
 Facility.h/cpp-Declares the facility class and functions
 Text files- Store campus facility routes and the data
 
