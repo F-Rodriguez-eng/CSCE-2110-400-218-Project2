@@ -7,6 +7,7 @@
 #include "FacilityManager.h"
 #include "LoadReport.h"
 #include "TextHandler.h" //trimming, casing, splitting
+#include "CampusGraph.h"
 /*^^^^^^
 Include rest of h files above please
 */
@@ -88,7 +89,9 @@ int main(int argc, char* argv[]){
     LoadReport faciReport = facilities.loadFromFile(dataDr + "/facilities.txt");
     printFacilityReport(dataDr + /facilities.txt);
     //Michael (member B): campus graph
-
+    CampusGraph campusGraph;
+    campusGraph.loadBuildings(dataDr + "/buildings.txt");
+    campusGraph.loadConnections(dataDr + "/connections.txt");
     //Fernando (member C) departments
     DepartmentTree departments;
     departments.loadFromFile(dataDr + "/departments.txt");
@@ -104,15 +107,29 @@ int main(int argc, char* argv[]){
             case 2: comingSoon("Search facilitty by ID");
             break;
 
-            case 3: comingSoon("View campus graph");
+            case 3: // view campus graph
+             campusGraph.displayGraph();
             break;
 
-            case 4: comingSoon("Display graph counts and degrees");
+            case 4: // display graph counts & degrees
+             campusGraph.displayStatistics();
             break;
 
-            case 5: comingSoon("Find reachable buildings (BFS)");
-            break;
+            case 5: {
+              cout << "Enter starting building: ";
+              string start;
+              getline(cin, start);
 
+              start = TextHandler::trimmer(start);
+               if (start.empty()) {
+                   cout << "ERROR: Building name cannot be blank.\n";
+               }
+               else {
+                   campusGraph.bfsReachability(start);
+               }
+            break;
+            }
+            
             case 6: DepartmentMenu::addDept(departments);
             break;
 
