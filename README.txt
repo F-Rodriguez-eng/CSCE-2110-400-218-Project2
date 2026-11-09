@@ -15,7 +15,32 @@ Michael Oke
 Fernando Rodriguez
 
 Features Implemented
+Facility Management
+-Facility Search-ID
+                -Name
+                -Category
+-Facility Viewing
+-Category reports
 
+Hash Table
+-Custom hash function
+-Collision handling
+-Facility ID lookup
+
+Graph
+-Building and work connections
+-Shotest path searching
+-Connectivity functions
+
+Department Hierarchy
+-Tree structure
+
+File management
+-Reading the campus data from the text files
+-  Validating records
+
+Files in the project
+Main.cpp-Has the main menu and controls the whole program
 
 
 
