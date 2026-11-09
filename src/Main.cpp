@@ -144,17 +144,25 @@ int main(int argc, char* argv[]){
             break;
             }
             
-            case 6: DepartmentMenu::addDept(departments);
+            case 6: { //add depts
+                DepartmentMenu::addDept(departments);
             break;
+            }
 
-            case 7: DepartmentMenu::searchDept(departments);
+            case 7:{ //department search using name
+                DepartmentMenu::searchDept(departments);
             break;
+            }
 
-            case 8: DepartmentMenu::displayHier(departments);
+            case 8:{ // department hierarchy display
+                DepartmentMenu::displayHier(departments);
             break;
+            }
 
-            case 9: DepartmentMenu::preorder(departments);
+            case 9:{ // +preorder traversal through departments
+                DepartmentMenu::preorder(departments);
             break;
+            }
 
             case 0: cout << "Exiting, thank you using the Smart Campus Navigation System!\n";
             break;
