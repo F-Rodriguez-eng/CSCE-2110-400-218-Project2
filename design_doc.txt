@@ -1,8 +1,58 @@
 Project 2: Smart Campus Navigation and Facility Analytics System
-DESIGN DOCUMENT - Milestone 1 (with Final extensions)
+DESIGN DOCUMENT - Milestone 1
 
-TEAM STRUCTURE
-Member A (Brenda Cheruiyot): facilities and custom ID hash table.
-Member B (Michael Oke): campus graph and BFS.
-Member C (Fernando Rodriguez): department tree and text helpers.
-main.cpp handles file loading, menu input, and calls to these modules.
+1. FACILITY HASH TABLE - BRENDA
+Facility IDs are normalized to uppercase (F plus three digits). The project
+requires a custom hash function, insertion, lookup, duplicate detection,
+and collision handling; std::hash and library hash tables cannot replace it.
+Fill in these fields after reviewing the actual Facilityhashtable code:
+- Hash formula
+- Initial capacity
+- Collision strategy
+- Reason for strategy
+- Collision definition/counting
+- Table-full behavior/resizing
+A collision test and real diagnostic output belong in test_results.txt.
+
+2. CAMPUS GRAPH - MICHAEL
+CampusGraph uses vector<string> buildings, vector<vector<int>> neighbors,
+and int edgeCount. Building names are vertices; walkways are undirected,
+unweighted edges. For each connection A|B, the graph adds B to A's neighbor
+list and A to B's, but counts the edge only once. An adjacency list grows
+dynamically, avoids unused matrix space, and preserves neighbor insertion
+order, which the grader uses for BFS traversal and shortest-path ties.
+
+loadBuildings() and loadConnections() read complete text lines, ignore blank
+and comment lines, trim outer whitespace, and report malformed records,
+duplicates, self-connections, and unknown buildings by file and line number.
+Building matching ignores capitalization; original accepted spelling is
+preserved. TextHandler.h supplies trimmer(), split(), and eqIgnCase().
+
+displayGraph() prints each building and its neighbors, including
+'(no connections)' for an isolated building. displayStatistics() reports
+vertex count, undirected edge count, and each building's degree.
+
+bfsReachability() looks up a starting building, uses a queue plus visited
+and distance vectors, marks a neighbor visited when enqueuing it, and prints
+buildings in BFS order with distances and reachable count. Unknown starts
+are rejected; isolated starts reach only themselves.
+
+Final graph features already defined in CampusGraph: shortestPath() uses
+BFS parents to reconstruct a route with the fewest edges, while
+connectivityReport() finds highest degrees, isolated vertices, and the
+number of components using repeated BFS. Both still need Final menu wiring.
+
+3. DEPARTMENT GENERAL TREE - FERNANDO
+DepartmentNode, DepartmentTree, and DepartmentMenu implement a general tree
+with any number of children per node. M1 features include load, add,
+search, hierarchy display, and preorder traversal. Final adds postorder,
+level-order, and tree statistics. [confirm node storage, traversal
+implementation, and memory cleanup before submitting.]
+
+4. INTEGRATION AND VALIDATION
+Load files in this order: buildings, connections, facilities, departments.
+Keep algorithms inside modules and menu/file coordination in main.cpp.
+Handle missing files, invalid names, and invalid input without crashing.
+Do not hard-code campus results or impose arbitrary fixed array limits.
+The team must verify full compilation on UNT CSE CELL, record real test
+results, and confirm the required Exit menu numbering before submission.
